@@ -1,0 +1,22 @@
+<div class="layout-container">
+  <app-sidebar></app-sidebar>
+  <main class="main-content">
+    <header class="topbar">
+      <span class="greeting">
+        <i class="pi pi-sun"></i> Olá Convidado!, Bem Vindo!
+      </span>
+
+      <div class="topbar-icons">
+        <i class="pi pi-calendar"></i>
+
+        <div class="notification-container">
+          <i class="pi pi-bell notification-icon"></i>
+          <span class="notification-badge">1</span>
+        </div>
+      </div>
+    </header>
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>

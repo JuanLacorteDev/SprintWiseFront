@@ -1,0 +1,39 @@
+<aside class="sidebar">
+  <div class="logo-section">
+    <img src="assets/img/SprintWise2.png" class="logo" />
+  </div>
+
+  <nav class="menu">
+    <section class="menu-group">
+      <h5 class="group-title">Principal</h5>
+      <p-panelMenu
+        [model]="itemsPrincipal"
+        styleClass="sidebar-menu"
+      ></p-panelMenu>
+    </section>
+
+    <section class="menu-group">
+      <h5 class="group-title">Análises</h5>
+      <p-panelMenu
+        [model]="itemsAnalise"
+        styleClass="sidebar-menu"
+      ></p-panelMenu>
+    </section>
+  </nav>
+
+  <div class="call-to-action">
+    <div class="cta-content">
+      <h3>UPGRADE PRO</h3>
+      <p>Seja PRO e desbloqueie a agilidade do seu time!</p>
+      <button pButton label="Ver Planos" class="cta-button"></button>
+    </div>
+  </div>
+
+  <div class="user-section">
+    <div class="profile-info">
+      <span class="pi pi-user profile-icon"></span>
+      <span class="username">Convidado</span>
+    </div>
+    <button pButton label="Entrar" class="login-button"></button>
+  </div>
+</aside>
