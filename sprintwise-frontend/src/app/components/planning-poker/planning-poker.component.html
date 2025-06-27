@@ -1,10 +1,50 @@
-<p>PLANNING POKER</p>
+<!-- <p>PLANNING POKER</p>
+<header>
+
+</header>
+
 <section>
   <div *ngFor="let userB of bottomUsers" style="margin: 5px;">
-    <span>{{ userB.name }}</span>
-    <br>
-    <span>{{ userB.status }}</span>
-    <br>
-    <span>{{ userB.voteValue }}</span>
+    <app-user-card [user]="userB"></app-user-card>
+  </div>
+</section> -->
+
+
+
+<p class="app-title">Planning Poker</p>
+
+<!-- TOPO -->
+<header class="top-container">
+  <div class="organizer-box">
+    <app-user-card [user]="organizerUser"></app-user-card>
+  </div>
+
+  <div class="task-box">
+    <h4>Task A</h4>
+    <p class="task-desc">
+      Lorem Ipsum ipsum lorem, lorem deste comum lorem ipsum dorime, ameno ameno dorime.
+    </p>
+    <div class="project-info">
+      Projeto A<br />
+      <span class="sprint-date">Sprint 05/05/2025</span>
+    </div>
+  </div>
+</header>
+
+<!-- MEIO: PAINEL DE VOTOS -->
+<section class="vote-panel">
+  <div class="card-options">
+    <div *ngFor="let card of voteCards" class="vote-card" [class.selected]="card === selectedVote" (click)="selectVote(card)">
+      {{ card }}
+    </div>
+  </div>
+
+  <button class="vote-button" (click)="confirmVote()">CONFIRMAR VOTO</button>
+</section>
+
+<!-- RODAPÉ: USUÁRIOS -->
+<section class="users-bottom">
+  <div *ngFor="let userB of bottomUsers" class="user-wrapper">
+    <app-user-card [user]="userB"></app-user-card>
   </div>
 </section>
