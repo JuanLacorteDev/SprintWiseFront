@@ -39,6 +39,7 @@
     .content {
       flex: 1;
       padding: 0 1em;
+      overflow: auto;
     }
   }
 }
@@ -77,4 +78,3 @@
   font-family: "Segoe UI", sans-serif;
   overflow: hidden;
 }
-
