@@ -31,16 +31,19 @@
   color: #666;
 }
 
-.username {
+.userNickname {
   font-weight: 500;
   color: #777;
-  margin: 4px 0;
+  margin: 2px 0;
+  text-align: left;
 }
 
 .status-voting {
   color: #f25f5c;
   font-weight: 500;
   font-size: 14px;
+  text-align: left;
+  margin: 1px 0;
 }
 
 .status-voted {

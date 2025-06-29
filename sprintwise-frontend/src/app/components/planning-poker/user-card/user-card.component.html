@@ -5,7 +5,7 @@
       <i class="fas fa-user user-icon"></i>
     </ng-template>
   </div>
-  <p class="username">{{ user?.nickName }}</p>
+  <p class="userNickname">{{ user?.nickName }}</p>
   <p *ngIf="!user?.hasVoted" class="status-voting">{{ user?.labelStatus }}</p>
   <p *ngIf="user?.hasVoted" class="status-voted">{{ user?.valueVote }}</p>
 </div>

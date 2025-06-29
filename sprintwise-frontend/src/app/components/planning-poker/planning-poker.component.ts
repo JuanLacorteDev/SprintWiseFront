@@ -49,7 +49,6 @@ export class PlanningPokerComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit(): Promise<void> {
-    
 
     this.planningPokerService.startConnection().then(() => {
       this.planningPokerService.joinPlanning(
@@ -58,7 +57,7 @@ export class PlanningPokerComponent implements OnInit, OnDestroy {
 
       this.planningPokerService.listenForVotes((userVote) => {
         console.table(this.bottomUsers);
-        var user = this.bottomUsers.find((bu) => bu.userId == userVote.id);
+        var user = this.bottomUsers.find((bu) => bu.userId == userVote.userId);
         if (user) {
           user.hasVoted = true;
           user.valueVote = userVote.voteValue;
@@ -87,18 +86,7 @@ export class PlanningPokerComponent implements OnInit, OnDestroy {
   }
 
   confirmVote() {
-    this.bottomUsers.push({
-      name: 'Alguem',
-      nickName: 'PO',
-      userId: '8b677bb8-7633-49e0-843b-640926830a3e',
-      valueVote: '0',
-      labelStatus: 'Aguardando...',
-      hasVoted: false,
-      showVote: false,
-      avatarUrl: '',
-    });
-
-    console.log('Confirmando voto:', this.selectedVote);
+    alert(this.selectedVote);
   }
 }
 

@@ -14,7 +14,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
     RouterModule,
     BadgeModule,
     PanelMenuModule,
-    SidebarComponent
+    SidebarComponent,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
@@ -22,6 +22,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 export class LayoutComponent {
   itemsPrincipal: MenuItem[] = [];
   itemsAnalise: MenuItem[] = [];
+  isSidebarCollapsed = false;
 
   ngOnInit() {
     this.itemsPrincipal = [
@@ -59,5 +60,9 @@ export class LayoutComponent {
         routerLink: '/usuarios',
       },
     ];
+  }
+
+  toggleSidebar() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
 }

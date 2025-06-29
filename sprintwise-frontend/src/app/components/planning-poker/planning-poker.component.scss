@@ -3,7 +3,7 @@
   grid-template-columns: 45% 1fr;
   gap: 24px;
   padding: 16px;
-  height: 100vh;
+  height: 75vh;
   box-sizing: border-box;
 }
 
@@ -15,10 +15,7 @@
   gap: 24px;
 }
 
-.app-title {
-  font-size: 14px;
-  color: #ccc;
-}
+
 
 /* Box de tarefa */
 .task-box {
@@ -86,7 +83,7 @@
 }
 
 .vote-button {
-  background-color: #2ecc71;
+  background-color: #29978b;
   color: white;
   padding: 10px 20px;
   border-radius: 6px;

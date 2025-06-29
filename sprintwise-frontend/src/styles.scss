@@ -1,14 +1,15 @@
 /* styles.css ou componente SCSS */
 
 :root {
-  --color-primary: #1D2C4C;
-  --color-accent: #2EC5A6;
-  --color-danger: #F76C5E;
+  --color-primary: #1d2c4c;
+  --color-accent: #2ec5a6;
+  --color-danger: #f76c5e;
   --color-background: #efe6e6;
-  --color-border: #B0B0B0;
+  --color-border: #b0b0b0;
 
   --text-primary: var(--color-primary);
   --text-muted: #666;
+  --p-panelmenu-gap: 3px
 }
 
 html,
@@ -20,6 +21,10 @@ body {
   font-family: "Segoe UI", sans-serif;
 }
 
+.app-title {
+  font-size: 14px;
+  color: #ccc;
+}
 
 /* Webkit Browsers (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {

@@ -1,10 +1,19 @@
 <div class="layout-container">
-  <app-sidebar></app-sidebar>
-  <main class="main-content">
+  <app-sidebar [collapsed]="isSidebarCollapsed" class="sidebar" [class.collapsed]="isSidebarCollapsed"></app-sidebar>
+
+  <main class="main-content" [class.sidebar-collapsed]="isSidebarCollapsed">
+    <button class="toggle-button" (click)="toggleSidebar()">
+      <i
+        class="pi"
+        [ngClass]="{
+          'pi-angle-double-left': !isSidebarCollapsed,
+          'pi-angle-double-right': isSidebarCollapsed
+        }"
+      ></i>
+    </button>
+
     <header class="topbar">
-      <span class="greeting">
-        <i class="pi pi-sun"></i> Olá Convidado!, Bem Vindo!
-      </span>
+      <span class="greeting"><i class="pi pi-sun"></i> Olá Convidado!, Bem Vindo!</span>
 
       <div class="topbar-icons">
         <i class="pi pi-calendar"></i>
@@ -15,6 +24,7 @@
         </div>
       </div>
     </header>
+
     <section class="content">
       <router-outlet></router-outlet>
     </section>
