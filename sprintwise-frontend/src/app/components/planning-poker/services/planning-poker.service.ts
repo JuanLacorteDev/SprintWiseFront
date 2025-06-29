@@ -1,12 +1,24 @@
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { environment } from '../../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { CardUser } from '../../../models/user/CardUser';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PlanningPokerService {
   private hubConnection!: signalR.HubConnection;
+
+  constructor(protected httpClient: HttpClient) {}
+
+  public async buscarUsers(): Promise<CardUser[]> {
+    const result = await firstValueFrom(
+      this.httpClient.get<CardUser[]>(`${environment.apiBaseUrl}/users`)
+    );
+    return result;
+  }
 
   public startConnection(): Promise<void> {
     this.hubConnection = new signalR.HubConnectionBuilder()
@@ -17,22 +29,28 @@ export class PlanningPokerService {
     return this.hubConnection
       .start()
       .then(() => console.log('Conectado ao SignalR'))
-      .catch(err => console.error('Erro ao conectar SignalR:', err));
+      .catch((err) => console.error('Erro ao conectar SignalR:', err));
   }
 
   public joinPlanning(planningId: string): void {
-    this.hubConnection.invoke('JoinPlanningGroup', planningId)
+    this.hubConnection
+      .invoke('JoinPlanningGroup', planningId)
       .then(() => console.log(`Entrou no grupo ${planningId}`))
-      .catch(err => console.error('Erro ao entrar no grupo:', err));
+      .catch((err) => console.error('Erro ao entrar no grupo:', err));
   }
 
   public listenForVotes(callback: (vote: any) => void): void {
     this.hubConnection.on('SendPlanningVote', callback);
   }
 
+  public listenForNewUser(callback: (user: any) => void): void {
+    this.hubConnection.on('JoinPlannig', callback);
+  }
+
   public leavePlanning(planningId: string): void {
-    this.hubConnection.invoke('LeavePlanningGroup', planningId)
+    this.hubConnection
+      .invoke('LeavePlanningGroup', planningId)
       .then(() => console.log(`Saiu do grupo ${planningId}`))
-      .catch(err => console.error('Erro ao sair do grupo:', err));
+      .catch((err) => console.error('Erro ao sair do grupo:', err));
   }
 }

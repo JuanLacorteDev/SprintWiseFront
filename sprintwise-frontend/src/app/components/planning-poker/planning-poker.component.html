@@ -1,50 +1,47 @@
-<!-- <p>PLANNING POKER</p>
-<header>
-
-</header>
-
-<section>
-  <div *ngFor="let userB of bottomUsers" style="margin: 5px;">
-    <app-user-card [user]="userB"></app-user-card>
-  </div>
-</section> -->
-
-
-
 <p class="app-title">Planning Poker</p>
 
-<!-- TOPO -->
-<header class="top-container">
-  <div class="organizer-box">
-    <app-user-card [user]="organizerUser"></app-user-card>
-  </div>
+<div class="planning-poker-layout">
+  <!-- COLUNA ESQUERDA: tudo agrupado -->
+  <aside class="left-panel">
+    <section class="box-task-user">
+      <app-user-card [user]="organizerUser"></app-user-card>
+      <div class="task-box">
+        <h4>Task A</h4>
+        <p class="task-desc">
+          Lorem Ipsum ipsum lorem, lorem deste comun lorem ipsum dorime, ameno
+          ameno dorime.
+        </p>
+        <div class="project-info">
+          Projeto A<br />
+          <span class="sprint-date">Sprint 05/05/2025</span>
+        </div>
+      </div>
+    </section>
 
-  <div class="task-box">
-    <h4>Task A</h4>
-    <p class="task-desc">
-      Lorem Ipsum ipsum lorem, lorem deste comum lorem ipsum dorime, ameno ameno dorime.
-    </p>
-    <div class="project-info">
-      Projeto A<br />
-      <span class="sprint-date">Sprint 05/05/2025</span>
-    </div>
-  </div>
-</header>
+    <section class="vote-panel">
+      <div class="card-options">
+        <div
+          *ngFor="let card of voteCards"
+          class="vote-card"
+          [class.selected]="card === selectedVote"
+          (click)="selectVote(card)"
+        >
+          {{ card }}
+        </div>
+      </div>
+      <button class="vote-button" (click)="confirmVote()">
+        CONFIRMAR VOTO
+      </button>
+    </section>
+  </aside>
 
-<!-- MEIO: PAINEL DE VOTOS -->
-<section class="vote-panel">
-  <div class="card-options">
-    <div *ngFor="let card of voteCards" class="vote-card" [class.selected]="card === selectedVote" (click)="selectVote(card)">
-      {{ card }}
-    </div>
-  </div>
-
-  <button class="vote-button" (click)="confirmVote()">CONFIRMAR VOTO</button>
-</section>
-
-<!-- RODAPÉ: USUÁRIOS -->
-<section class="users-bottom">
-  <div *ngFor="let userB of bottomUsers" class="user-wrapper">
-    <app-user-card [user]="userB"></app-user-card>
-  </div>
-</section>
+  <!-- COLUNA DIREITA: grade de usuários -->
+  <section class="users-grid">
+    <app-user-card
+      *ngFor="let user of bottomUsers"
+      [@fadeIn]
+      [user]="user"
+      class="user-card-wrapper"
+    ></app-user-card>
+  </section>
+</div>
